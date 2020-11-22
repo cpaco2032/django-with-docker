@@ -1,0 +1,43 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block js %}
+<script>
+    function Ajax_Delete(obj) {
+        $.ajax({
+            url: "{% url 'shop:product-delete' %}",
+            type: 'POST',
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            mode: 'same-origin',
+            datatype: 'json',
+            data: {
+                'id': $(obj).attr('arg')
+            },
+            success: function (arg) {
+                location.reload()
+            }
+        });
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>
+    {{ title }}
+</h1>
+{% for product in product_list %}
+<div class="row">
+    <a href="{% url 'shop:product-detail' product.id %}">
+        Name: {{ product.name }}
+        Type: {{ product.type }}
+    </a>
+    <form method="post">{% csrf_token %}
+        <input type="button" onclick="Ajax_Delete(this);" value="Delete" arg="{{ product.id }}" />
+    </form>
+</div>
+{% empty %}
+<p>There are no Product</p>
+{% endfor %}
+{% endblock %}

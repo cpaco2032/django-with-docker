@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    {% comment %}  
+        form.as_p = auto create form with <p>, as_table = with <table> .....
+        form.name =  use the create input nmae="name",  the attr e.g. class, will set in forms.py
+    {% endcomment %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

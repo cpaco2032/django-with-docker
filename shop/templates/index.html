@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block content %}
+This is index
+<br />
+<div class="pl-3 row">
+    <a href={% url 'shop:product-all-list' %}>Product List</a>  ||
+    <form method="get" action={% url 'shop:product-all-list' %}>{% csrf_token %}
+        <input type='submit' text="List" />
+    </form>
+</div>
+<br />
+<a href={% url 'shop:product-create' %}>Product Create</a>
+<br />
+
+
+
+{% endblock %}

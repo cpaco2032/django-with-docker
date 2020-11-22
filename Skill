@@ -1,0 +1,8 @@
+python manage.py makemigrations polls 
+=create model to makemigrations
+
+python manage.py sqlmigrate polls 0001
+=show all the sql will do
+
+python manage.py migrate
+=execute the sql

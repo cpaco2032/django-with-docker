@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+{{ product.id }}
+{{ product.name }}
+{{ product.description }}
+{{ product.create_date }}
+{{ product.update_date }}
+{{ product.type }}
+
+<a href={% url 'shop:product-update' product.id %}>Product Update</a>
+
+{% endblock %}
